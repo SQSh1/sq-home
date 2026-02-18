@@ -67,16 +67,18 @@
     }
 
     .custom-placeholder {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      transition: opacity 0.25s;
-    }
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  transition: opacity 0.25s;
+  direction: ltr;          /* مهم */
+  unicode-bidi: isolate;   /* جلوگیری از تاثیر RTL والد */
+}
 
     .search-input:focus + .custom-placeholder,
     .search-input:not(:placeholder-shown) + .custom-placeholder {
