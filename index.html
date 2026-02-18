@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQ Home</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 28px;
+      color: #222;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    .links {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+    a {
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 14px;
+      width: 230px;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: 0.2s;
+      font-weight: 500;
+    }
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+    .github { background: #24292e; }
+    .youtube { background: #c62828; }
+    .iptest { background: #1565c0; }
+    .google-search-wrapper {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .google-search-input {
+      width: 260px;
+      padding: 14px 14px;
+      border-radius: 12px;
+      border: 2px solid #4285F4;
+      font-size: 16px;
+      outline: none;
+      box-shadow: 0 0 6px rgba(66,133,244,0.4);
+      position: relative;
+      font-weight: 500;
+      color: #202124;
+    }
+    .google-placeholder {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 600;
+      pointer-events: none;
+      font-size: 16px;
+    }
+    .google-placeholder span:nth-child(1) { color: #4285F4; }
+    .google-placeholder span:nth-child(2) { color: #EA4335; }
+    .google-placeholder span:nth-child(3) { color: #FBBC05; }
+    .google-placeholder span:nth-child(4) { color: #4285F4; }
+    .google-placeholder span:nth-child(5) { color: #34A853; }
+    .google-placeholder span:nth-child(6) { color: #EA4335; }
+    .google-placeholder span:nth-child(7) { color: #202124; }
+    .google-placeholder span:nth-child(8) { color: #4285F4; }
+    .google-placeholder span:nth-child(9) { color: #EA4335; }
+    .google-placeholder span:nth-child(10) { color: #FBBC05; }
+    .google-placeholder span:nth-child(11) { color: #34A853; }
+    .google-placeholder span:nth-child(12) { color: #EA4335; }
+    .google-placeholder span:nth-child(13) { color: #4285F4; }
+  </style>
+</head>
+<body>
+  <h1>صفحه شروع SQ</h1>
+
+  <div class="google-search-wrapper">
+    <form action="https://www.google.com/search" method="GET" style="position:relative; display:inline-block;">
+      <input class="google-search-input" type="text" name="q">
+      <div class="google-placeholder">
+        <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span><span> </span><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span>
+      </div>
+    </form>
+  </div>
+
+  <div class="links">
+    <a class="github" href="https://github.com">GitHub</a>
+    <a class="youtube" href="https://m.youtube.com">YouTube</a>
+    <a class="iptest" href="https://browserleaks.com/ip">IP Test</a>
+  </div>
+
+  <script>
+    const input = document.querySelector('.google-search-input');
+    const placeholder = document.querySelector('.google-placeholder');
+    input.addEventListener('focus', () => placeholder.style.display='none');
+    input.addEventListener('blur', () => { if(input.value==='') placeholder.style.display='block'; });
+  </script>
+</body>
+  </html>
