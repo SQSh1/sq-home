@@ -3,114 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SQ Home</title>
+  <title>SQ Start Page</title>
   <style>
+    :root {
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --google-gray: #202124;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      font-family: sans-serif;
-      background: #f0f2f5;
-      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      height: 100vh;
     }
+
     h1 {
-      font-size: 28px;
-      color: #222;
-      margin-top: 50px;
-      margin-bottom: 30px;
-    }
-    .links {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: center;
-    }
-    a {
-      text-decoration: none;
-      padding: 14px 25px;
-      border-radius: 14px;
-      width: 230px;
-      font-size: 18px;
-      color: #fff;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: 0.2s;
-      font-weight: 500;
-    }
-    a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-    }
-    .github { background: #24292e; }
-    .youtube { background: #c62828; }
-    .iptest { background: #1565c0; }
-    .google-search-wrapper {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .google-search-input {
-      width: 260px;
-      padding: 14px 14px;
-      border-radius: 12px;
-      border: 2px solid #4285F4;
-      font-size: 16px;
-      outline: none;
-      box-shadow: 0 0 6px rgba(66,133,244,0.4);
-      position: relative;
-      font-weight: 500;
+      font-size: 2.5rem;
       color: #202124;
+      margin-bottom: 3.5rem;
+      font-weight: 300;
+      letter-spacing: -0.5px;
     }
-    .google-placeholder {
+
+    .search-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 4rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 1.125rem;
+      border: 1px solid #dfe1e5;
+      border-radius: 999px;
+      outline: none;
+      transition: all 0.25s;
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+      color: var(--google-gray);
+    }
+
+    .search-input:focus {
+      border-color: var(--google-blue);
+      box-shadow: 0 1px 10px rgba(66,133,244,0.35);
+    }
+
+    .custom-placeholder {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: 600;
+      inset: 0;
       pointer-events: none;
-      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      color: #9aa0a6;
+      transition: opacity 0.25s;
     }
-    .google-placeholder span:nth-child(1) { color: #4285F4; }
-    .google-placeholder span:nth-child(2) { color: #EA4335; }
-    .google-placeholder span:nth-child(3) { color: #FBBC05; }
-    .google-placeholder span:nth-child(4) { color: #4285F4; }
-    .google-placeholder span:nth-child(5) { color: #34A853; }
-    .google-placeholder span:nth-child(6) { color: #EA4335; }
-    .google-placeholder span:nth-child(7) { color: #202124; }
-    .google-placeholder span:nth-child(8) { color: #4285F4; }
-    .google-placeholder span:nth-child(9) { color: #EA4335; }
-    .google-placeholder span:nth-child(10) { color: #FBBC05; }
-    .google-placeholder span:nth-child(11) { color: #34A853; }
-    .google-placeholder span:nth-child(12) { color: #EA4335; }
-    .google-placeholder span:nth-child(13) { color: #4285F4; }
+
+    .search-input:focus + .custom-placeholder,
+    .search-input:not(:placeholder-shown) + .custom-placeholder {
+      opacity: 0;
+    }
+
+    .custom-placeholder span {
+      animation: gentle-float 4s infinite ease-in-out;
+    }
+
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-4px); }
+    }
+
+    .g { color: var(--google-blue); }
+    .o1 { color: var(--google-red); }
+    .o2 { color: var(--google-yellow); }
+    .g2 { color: var(--google-blue); }
+    .l { color: var(--google-green); }
+    .e { color: var(--google-red); }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .link-btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+
+    .github { background: #24292e; }
+    .youtube { background: #ff0000; }
+    .iptest  { background: #1a73e8; }
   </style>
 </head>
 <body>
-  <h1>صفحه شروع SQ</h1>
 
-  <div class="google-search-wrapper">
-    <form action="https://www.google.com/search" method="GET" style="position:relative; display:inline-block;">
-      <input class="google-search-input" type="text" name="q">
-      <div class="google-placeholder">
-        <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span><span> </span><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span>
+  <h1>SQ Start Page</h1>
+
+  <div class="search-container">
+    <form action="https://www.google.com/search" method="get">
+      <input 
+        type="text" 
+        name="q" 
+        class="search-input" 
+        autocomplete="off"
+        placeholder=" "
+      >
+      <div class="custom-placeholder">
+        <span class="g">G</span>
+        <span class="o1">o</span>
+        <span class="o2">o</span>
+        <span class="g2">g</span>
+        <span class="l">l</span>
+        <span class="e">e</span>
+        <span> </span>
+        <span class="g">S</span>
+        <span class="o1">e</span>
+        <span class="o2">a</span>
+        <span class="g2">r</span>
+        <span class="l">c</span>
+        <span class="e">h</span>
       </div>
     </form>
   </div>
 
   <div class="links">
-    <a class="github" href="https://github.com">GitHub</a>
-    <a class="youtube" href="https://m.youtube.com">YouTube</a>
-    <a class="iptest" href="https://browserleaks.com/ip">IP Test</a>
+    <a href="https://github.com" class="link-btn github">GitHub</a>
+    <a href="https://www.youtube.com" class="link-btn youtube">YouTube</a>
+    <a href="https://browserleaks.com/ip" class="link-btn iptest">IP Test</a>
   </div>
 
-  <script>
-    const input = document.querySelector('.google-search-input');
-    const placeholder = document.querySelector('.google-placeholder');
-    input.addEventListener('focus', () => placeholder.style.display='none');
-    input.addEventListener('blur', () => { if(input.value==='') placeholder.style.display='block'; });
-  </script>
 </body>
 </html>
